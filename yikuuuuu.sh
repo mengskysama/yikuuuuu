@@ -2,16 +2,10 @@ username='13800000000'
 password='000000'
 
 do_login() {
-    t=$((`date +%s`*1000+`date +%-N`/1000000))
+    t="1111111111111"
     data='passport='$username'&password='$password'&captcha=&remember=1&callback=logincallback_'$t'&from=http%3A%2F%2Flogin.youku.com%2F@@@@&wintype=page'
-    result=$(curl -A "User-Agent: Mozilla/4.0" -c youku.cookie --location --data $data https://login.youku.com/user/login_submit/ 2>/dev/null)
-    echo "$result" |grep -q "len-2"
-    if [ $? -eq 0 ]; then
-        echo 0
-        return
-    fi
-    echo 1
-    return
+    result=$(curl -A "User-Agent: Mozilla/4.0" -c youku.cookie --location --data $data http://login.youku.com/user/login_submit/ 2>/dev/null)
+    echo $result
 }
 
 do_speed_up() {
@@ -24,7 +18,8 @@ result=`do_speed_up`
 echo "$result" |grep -q "20011"
 if [ $? -eq 0 ]; then
     result=`do_login`
-    if [ x"$result" == x"0" ]; then
+    echo "$result" |grep -q "len-2"
+    if [ $? -eq 0 ]; then
         echo `date +%Y-%m-%d-%H:%M:%S`" 登录成功"
         echo `date +%Y-%m-%d-%H:%M:%S`" 登录成功" > /tmp/yiku.status
     else
