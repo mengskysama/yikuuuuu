@@ -57,7 +57,7 @@ if [ $switch_mode -eq 1 ]; then
         result=`do_switch`
     fi
 fi
-exit
+
 result=`do_speed_up`
 echo "$result" |grep -q "20021"
 if [ $? -eq 0 ]; then
