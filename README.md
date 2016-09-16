@@ -17,3 +17,7 @@
   sh ./yikuuuuu.sh
   then add to crontab
 ```
+
+#  同类产品
+
+    https://github.com/fffonion/Xunlei-Fastdick
