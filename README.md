@@ -19,5 +19,4 @@
 ```
 
 #  同类产品
-
-    https://github.com/fffonion/Xunlei-Fastdick
+https://github.com/fffonion/Xunlei-Fastdick  迅雷快diao
