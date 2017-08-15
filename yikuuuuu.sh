@@ -1,10 +1,10 @@
 #!/bin/bash
-passport='13800000000'
+passport='17300000000'
 password='000000'
 
 switch_mode=1
 
-ua='User-Agent: Mozilla/5.0'
+ua='Mozilla/5.0 (Linux; Android 4.1.1; Nexus 7 Build/JRO03D) MDZZ'
 
 do_login() {
     passwordmd5=$(echo -n $password | md5sum | cut -d" " -f1)
@@ -16,7 +16,7 @@ do_login() {
     token=${token/token\":\"/""}
     #echo $token
     
-    ret=$(curl 'https://account.youku.com/login/confirm.json?passport='$passport'&password='$passwordmd5'&loginType=passport_pwd&formtoken='$token'&rememberMe=true&state=false&buid=youku&template=tempA&mode=popup&actionFrom=&jsToken=0&jsonpCallback=jsonp_14811222976476134' -H '$ua' -H 'Referer: http://www.youku.com/' -m 10 -k -b /tmp/youku.cookie -c /tmp/youku.cookie 2>/dev/null)
+ret=$(curl 'http://account.youku.com/login/confirm.json?passport='$passport'&password='$passwordmd5'&loginType=passport_pwd&formtoken='$token'&UA=MDZZ&jsToken=0&mode=embedded&state=false&sendCodeType=mobileCode' -H '$ua' -H 'Referer: http://www.youku.com/' -m 10 -k -b /tmp/youku.cookie -c /tmp/youku.cookie 2>/dev/null)
     echo $ret
 }
 
